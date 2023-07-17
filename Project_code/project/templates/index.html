@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animated Page with Video Upload</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+	<style>
+		body {
+			background-color: #f1f3f6;
+		}
+		.container {
+			margin-top: 50px;
+			padding: 30px;
+			background-color: #fff;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+			border-radius: 10px;
+			animation-duration: 1s;
+			animation-name: fadeInDown;
+		}
+		h1 {
+			color: #f44336;
+			font-size: 48px;
+			font-weight: bold;
+			text-align: center;
+			animation-duration: 2s;
+			animation-name: bounceIn;
+			animation-delay: 0.5s;
+		}
+		.btn-custom {
+			background-color: #4caf50;
+			border-color: #4caf50;
+			color: #fff;
+			border-radius: 10px;
+			padding: 10px 20px;
+			font-size: 18px;
+			margin-top: 20px;
+			transition: all 0.3s ease;
+			animation-duration: 1s;
+			animation-name: fadeInUp;
+			animation-delay: 1s;
+		}
+		.btn-custom:hover {
+			background-color: #388e3c;
+			border-color: #388e3c;
+		}
+		.form-group {
+			animation-duration: 2s;
+			animation-name: bounceIn;
+			animation-delay: 1s;
+		}
+		.form-control-file {
+			animation-duration: 2s;
+			animation-name: bounceIn;
+			animation-delay: 1.5s;
+		}
+	</style>
+</head>
+<body>
+	<div class="container animate__animated">
+		<h1 class="animate__animated">Video Recognition and Narration</h1>
+		<form action="/" method = "POST" enctype="multipart/form-data">
+			{%csrf_token%}
+			<div class="form-group">
+				<label for="video">Video:</label>
+				<input type = "file" class="form-control-file" name="img" id="video">
+			</div>
+			<button type="submit" class="btn btn-custom animate__animated">Generate</button>
+		</form>
+		{% if image_path %}
+
+				<video style="width:280px;height: 280px; margin-left: 50%; position: relative; bottom: 90px; right:20px" autoplay controls>
+					<source src="{{image_path}}" type="video/mp4">
+	
+				</video>
+
+				<h2 class="title">Caption: {{str}}</h2>
+				<h2 class="title3">Play Audio:</h2>
+				<audio controls autoplay class="title4">
+	
+				<source src="static/example6.mp3" type="audio/mpeg">
+  				Your browser does not support the audio element.
+  				</audio>
+			{% endif %}
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.3/dist/umd/popper.min.js"
+		integrity="sha384-+3q4yiZxD44txOWmX+y5B5ipz0S78xR/X52F+kg/68I8Pc23bbNpJjpMv+sX1HfO"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"
+		integrity="sha384-Bru1+hJp6Ov/hPfDZ/xtLZ6JhF/yQd9Nqejy6r3UwD8Y2QGQJ4L4z4q3Bn491p5A"
+		crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
